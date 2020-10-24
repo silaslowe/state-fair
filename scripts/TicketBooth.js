@@ -56,14 +56,25 @@ eventHub.addEventListener("click", (clickEvent) => {
   }
 })
 
+eventHub.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.className === "btn") {
+    const customEvent = new CustomEvent("totalTicketsPurchased", {
+      detail: {
+        totalTicketsPurchased: null,
+      },
+    })
+    eventHub.dispatchEvent(customEvent)
+  }
+})
+
 export const TicketBooth = () => {
   contentTarget.innerHTML = `
         <div class="ticketBooth">
-        <button id="rideTicket">Ride Ticket</button>
-        <button id="foodTicket">Food Ticket</button>
-        <button id="gamesTicket">Game Ticket</button>
-        <button id="sideshowTicket">Sideshow Ticket</button>
-        <button id="packageTicket">Package Ticket</button>
+        <button class="btn" id="rideTicket">Ride Ticket</button>
+        <button class="btn" id="foodTicket">Food Ticket</button>
+        <button class="btn" id="gamesTicket">Game Ticket</button>
+        <button class="btn" id="sideshowTicket">Sideshow Ticket</button>
+        <button class="btn" id="packageTicket">Package Ticket</button>
         </div>
     `
 }
